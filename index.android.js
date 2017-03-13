@@ -12,18 +12,20 @@ import {
 } from 'react-native';
 
 import SearchPage from './SearchPage'
+import SearchResults from './SearchResults'
 
 export default class PropertyFinder extends Component {
   render() {
     return (
         <Navigator
-            style={styles.container}
             initialRoute={{
-                title:'Property Finder'
+                title:'Property Finder',
+                component: SearchPage
             }}
             renderScene={(route,navigator)=>{
-                return<SearchPage/>
+                return<route.component navigator = {navigator} {...route.passProps}/>
             }}
+
         />
     );
   }
